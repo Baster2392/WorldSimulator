@@ -31,6 +31,7 @@ public:
 	void addOrganism(Organism* organism);
 	void addCommunicat(std::string communicat);
 	Organism* getOrganismAtPosition(int positionX, int positionY);
+	void getSafeFieldNextTo(int positionX, int positionY, int* newPositionX, int* newPositionY);
 
 	// getters
 	int getPositionX();

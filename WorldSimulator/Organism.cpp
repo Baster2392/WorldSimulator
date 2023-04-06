@@ -62,18 +62,22 @@ void Organism::action()
 
 void Organism::collision(Organism* other)
 {
+	world->addCommunicat("Collision: " + this->name + " " + other->name);
 	if (isSameSpecies(this, other))
 	{
+		world->addCommunicat("Breed: " + this->name + " " + other->name);
 		this->breed();
 	}
 	else
 	{
+		world->addCommunicat("Fight: " + this->name + " vs " + other->name);
 		fight(this, other);
 	}
 }
 
 void Organism::breed()
 {
+	world->addCommunicat("Breed");
 }
 
 bool Organism::isAttackDefended(Organism* organism)
@@ -162,7 +166,7 @@ void Organism::fight(Organism* organism1, Organism* organism2)
 			organism1->killed(organism2);
 		}
 	}
-	else
+	else if (organism1->getInitiative() < organism2->getInitiative())
 	{
 		if (organism2->getPower() >= organism1->getPower())
 		{
@@ -171,6 +175,39 @@ void Organism::fight(Organism* organism1, Organism* organism2)
 		else
 		{
 			organism2->killed(organism1);
+		}
+	}
+	else if (organism1->getTurns() > organism2->getTurns())
+	{
+		if (organism1->getPower() >= organism2->getPower())
+		{
+			organism2->killed(organism1);
+		}
+		else
+		{
+			organism1->killed(organism2);
+		}
+	}
+	else if (organism1->getTurns() < organism2->getTurns())
+	{
+		if (organism2->getPower() >= organism1->getPower())
+		{
+			organism1->killed(organism2);
+		}
+		else
+		{
+			organism2->killed(organism1);
+		}
+	}
+	else
+	{
+		if (organism1->getPower() >= organism2->getPower())
+		{
+			organism2->killed(organism1);
+		}
+		else
+		{
+			organism1->killed(organism2);
 		}
 	}
 }

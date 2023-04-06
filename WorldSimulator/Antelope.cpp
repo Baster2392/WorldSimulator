@@ -42,3 +42,20 @@ bool Antelope::hasEscaped(Organism* organism)
 
 	return false;
 }
+
+void Antelope::breed()
+{
+	int newPositionX = this->positionX;
+	int newPositionY = this->positionY;
+
+	world->getSafeFieldNextTo(this->positionX, this->positionY, &newPositionX, &newPositionY);
+
+	if (this->positionX == newPositionX && this->positionY == newPositionY)
+	{
+		return;
+	}
+
+	Antelope* newAntelope = new Antelope(this->world, newPositionX, newPositionY);
+	this->world->addOrganism(newAntelope);
+	this->world->addCommunicat("Pojawilo sie nowe zwierze: Antylopa");
+}

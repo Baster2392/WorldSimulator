@@ -16,6 +16,7 @@ void World::makeTurn()
 	for (int i = 0; i < this->organisms.size(); i++)
 	{
 		this->organisms[i]->action();
+		this->organisms[i]->setTurns(this->organisms[i]->getTurns() + 1);
 	}
 
 	checkCollisions();
@@ -112,6 +113,50 @@ Organism* World::getOrganismAtPosition(int positionX, int positionY)
 	}
 
 	return nullptr;
+}
+
+void World::getSafeFieldNextTo(int positionX, int positionY, int* newPositionX, int* newPositionY)
+{
+	Organism* optionalOrganism;
+	if (positionX + 1 < this->width)
+	{
+		optionalOrganism = getOrganismAtPosition(positionX + 1, positionY);
+		if (optionalOrganism == nullptr)
+		{
+			(*newPositionX)++;
+			return;
+		}
+	}
+
+	if (positionX - 1 > 0)
+	{
+		optionalOrganism = getOrganismAtPosition(positionX - 1, positionY);
+		if (optionalOrganism == nullptr)
+		{
+			(*newPositionX)--;
+			return;
+		}
+	}
+
+	if (positionY + 1 < this->height)
+	{
+		optionalOrganism = getOrganismAtPosition(positionX, positionY + 1);
+		if (optionalOrganism == nullptr)
+		{
+			(*newPositionY)++;
+			return;
+		}
+	}
+
+	if (positionY - 1 > 0)
+	{
+		optionalOrganism = getOrganismAtPosition(positionX, positionY - 1);
+		if (optionalOrganism == nullptr)
+		{
+			(*newPositionY)--;
+			return;
+		}
+	}
 }
 
 void World::checkCollisions()

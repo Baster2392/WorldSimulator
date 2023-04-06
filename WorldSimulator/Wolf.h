@@ -4,5 +4,6 @@ class Wolf : public Animal
 {
 public:
 	Wolf(World* world, int positionX, int positionY);
+	void breed();
 };
 

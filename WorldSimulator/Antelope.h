@@ -9,5 +9,6 @@ public:
 	Antelope(World* world, int positionX, int positionY);
 
 	bool hasEscaped(Organism* organism);
+	void breed();
 };
 

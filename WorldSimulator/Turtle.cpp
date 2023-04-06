@@ -18,7 +18,7 @@ bool Turtle::isAttackDefended(Organism* other)
 	gotoxy(15, 15);
 	if (other->getPower() < 5)
 	{
-		world->addCommunicat("Zolw odbil atal: " + other->getName());
+		world->addCommunicat("Zolw odbil atak: " + other->getName());
 		return true;
 	}
 

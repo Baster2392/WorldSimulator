@@ -12,7 +12,7 @@ void Animal::action()
 
 void Animal::breed()
 {
-	// add animal to world
+	
 }
 
 void Animal::move()

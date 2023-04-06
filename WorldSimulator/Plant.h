@@ -1,8 +1,10 @@
 #pragma once
 #include "Organism.h"
-class Plant : Organism
+class Plant : public Organism
 {
 private:
+	int randomNumberTo10();
+	bool isBreeding();
 
 public:
 	// constructors
