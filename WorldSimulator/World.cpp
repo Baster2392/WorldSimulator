@@ -15,11 +15,15 @@ void World::makeTurn()
 
 	for (int i = 0; i < this->organisms.size(); i++)
 	{
-		this->organisms[i]->action();
-		this->organisms[i]->setTurns(this->organisms[i]->getTurns() + 1);
+		if (!this->organisms[i]->getIsKilled())
+		{
+			this->organisms[i]->action();
+			this->organisms[i]->setTurns(this->organisms[i]->getTurns() + 1);
+		}
 	}
 
 	checkCollisions();
+	deleteKilled();
 }
 
 void World::draw()
@@ -95,9 +99,20 @@ void World::eraseCommunicats()
 	for (int i = 0; i < this->communicats.size(); i++)
 	{
 		gotoxy(this->getPositionY() + this->width + 20, i + 3);
-		for (int j = 0; j < 40; j++)
+		for (int j = 0; j < 50; j++)
 		{
 			std::cout << " ";
+		}
+	}
+}
+
+void World::deleteKilled()
+{
+	for (Organism* organism : this->organisms)
+	{
+		if (organism->getIsKilled())
+		{
+			deleteOrganism(organism);
 		}
 	}
 }
@@ -128,7 +143,7 @@ void World::getSafeFieldNextTo(int positionX, int positionY, int* newPositionX, 
 		}
 	}
 
-	if (positionX - 1 > 0)
+	if (positionX - 1 >= 0)
 	{
 		optionalOrganism = getOrganismAtPosition(positionX - 1, positionY);
 		if (optionalOrganism == nullptr)
@@ -148,7 +163,7 @@ void World::getSafeFieldNextTo(int positionX, int positionY, int* newPositionX, 
 		}
 	}
 
-	if (positionY - 1 > 0)
+	if (positionY - 1 >= 0)
 	{
 		optionalOrganism = getOrganismAtPosition(positionX, positionY - 1);
 		if (optionalOrganism == nullptr)

@@ -53,36 +53,38 @@ Organism::Organism(World* world, int power, int initiative, int positionX, int p
 
 Organism::~Organism()
 {
-	// delete
+	
 }
 
 void Organism::action()
 {
+
 }
 
 void Organism::collision(Organism* other)
 {
-	world->addCommunicat("Collision: " + this->name + " " + other->name);
 	if (isSameSpecies(this, other))
 	{
-		world->addCommunicat("Breed: " + this->name + " " + other->name);
 		this->breed();
 	}
 	else
 	{
-		world->addCommunicat("Fight: " + this->name + " vs " + other->name);
 		fight(this, other);
 	}
 }
 
 void Organism::breed()
 {
-	world->addCommunicat("Breed");
+
 }
 
 bool Organism::isAttackDefended(Organism* organism)
 {
 	return false;
+}
+
+void Organism::specialEffectAfterKilled(Organism* other)
+{
 }
 
 bool Organism::hasEscaped(Organism* organism)
@@ -123,6 +125,16 @@ void Organism::goToSafeField()
 	}
 }
 
+bool Organism::isAnimal()
+{
+	return false;
+}
+
+bool Organism::isPlant()
+{
+	return false;
+}
+
 void Organism::draw()
 {
 	printf("%c", icon);
@@ -130,11 +142,13 @@ void Organism::draw()
 
 void Organism::killed(Organism* killedBy)
 {
+	this->specialEffectAfterKilled(killedBy);
+
 	std::string com = this->name + " zabity przez: " + killedBy->name;
 	world->addCommunicat(com);
 
 	this->isKilled = true;
-	this->world->deleteOrganism(this);
+	//this->world->deleteOrganism(this);
 }
 
 void Organism::fight(Organism* organism1, Organism* organism2)

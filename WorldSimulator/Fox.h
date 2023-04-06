@@ -9,6 +9,7 @@ public:
 	Fox(World* world, int positionX, int positionY);
 
 	void action();
+	void breed();
 	bool hasEscaped(Organism* other);
 };
 

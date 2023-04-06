@@ -20,5 +20,5 @@ void Grass::breed()
 
 	Grass* newGrass = new Grass(this->world, newPositionX, newPositionY);
 	world->addOrganism(newGrass);
-	world->addCommunicat("New grass");
+	world->addCommunicat("Pojawila sie nowa roslina: Trawa");
 }

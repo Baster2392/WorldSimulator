@@ -13,6 +13,23 @@ void Turtle::action()
 	}
 }
 
+void Turtle::breed()
+{
+	int newPositionX = this->positionX;
+	int newPositionY = this->positionY;
+
+	world->getSafeFieldNextTo(this->positionX, this->positionY, &newPositionX, &newPositionY);
+
+	if (this->positionX == newPositionX && this->positionY == newPositionY)
+	{
+		return;
+	}
+
+	Turtle* newTurtle = new Turtle(this->world, newPositionX, newPositionY);
+	this->world->addOrganism(newTurtle);
+	this->world->addCommunicat("Pojawilo sie nowe zwierze: Zolw");
+}
+
 bool Turtle::isAttackDefended(Organism* other)
 {
 	gotoxy(15, 15);

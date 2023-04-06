@@ -38,9 +38,12 @@ public:
 	virtual void collision(Organism* other);
 	virtual void breed();
 	virtual bool isAttackDefended(Organism* organism);
+	virtual void specialEffectAfterKilled(Organism* other);
 	virtual bool hasEscaped(Organism* other);
 	virtual void goToPreviousPosition();
 	virtual void goToSafeField();
+	virtual bool isAnimal();
+	virtual bool isPlant();
 
 	void draw();
 	void killed(Organism* killedBy);

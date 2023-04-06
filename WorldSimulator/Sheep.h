@@ -4,5 +4,6 @@ class Sheep : public Animal
 {
 public:
 	Sheep(World* world, int positionX, int positionY);
+	void breed();
 };
 

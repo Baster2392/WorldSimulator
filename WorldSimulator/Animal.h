@@ -12,5 +12,6 @@ public:
 
 	virtual void action();
 	virtual void breed();
+	bool isAnimal();
 };
 

@@ -1,17 +1,17 @@
 #include "Plant.h"
 
-int Plant::randomNumberTo10()
+int Plant::randomNumberTo15()
 {
 	std::random_device randomDevice;
 	std::mt19937 generator(randomDevice());
-	std::uniform_int_distribution<int> distr(1, 10);
+	std::uniform_int_distribution<int> distr(1, 15);
 
 	return distr(generator);
 }
 
 bool Plant::isBreeding()
 {
-	if (randomNumberTo10() == 10)
+	if (randomNumberTo15() == 5)
 	{
 		return true;
 	}
@@ -35,4 +35,9 @@ void Plant::action()
 
 void Plant::breed()
 {
+}
+
+bool Plant::isPlant()
+{
+	return true;
 }

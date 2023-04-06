@@ -49,6 +49,23 @@ void Fox::action()
 	}
 }
 
+void Fox::breed()
+{
+	int newPositionX = this->positionX;
+	int newPositionY = this->positionY;
+
+	world->getSafeFieldNextTo(this->positionX, this->positionY, &newPositionX, &newPositionY);
+
+	if (this->positionX == newPositionX && this->positionY == newPositionY)
+	{
+		return;
+	}
+
+	Fox* newFox = new Fox(this->world, newPositionX, newPositionY);
+	this->world->addOrganism(newFox);
+	this->world->addCommunicat("Pojawilo sie nowe zwierze: Lis");
+}
+
 bool Fox::hasEscaped(Organism* other)
 {
 	if (other->getPower() > this->power)

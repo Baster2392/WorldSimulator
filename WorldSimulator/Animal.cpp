@@ -15,6 +15,11 @@ void Animal::breed()
 	
 }
 
+bool Animal::isAnimal()
+{
+	return true;
+}
+
 void Animal::move()
 {
 	this->prevPositionX = this->positionX;

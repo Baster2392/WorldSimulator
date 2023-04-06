@@ -3,7 +3,9 @@
 class Plant : public Organism
 {
 private:
-	int randomNumberTo10();
+	int randomNumberTo15();
+
+protected:
 	bool isBreeding();
 
 public:
@@ -12,5 +14,6 @@ public:
 
 	void action();
 	void breed();
+	bool isPlant();
 };
 

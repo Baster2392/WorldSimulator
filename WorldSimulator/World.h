@@ -20,6 +20,7 @@ protected:
 	void checkCollisions();
 	void printCommunicats();
 	void eraseCommunicats();
+	void deleteKilled();
 
 public:
 	World(int height, int width);
