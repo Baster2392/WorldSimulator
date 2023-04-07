@@ -5,6 +5,11 @@ Nightshade::Nightshade(World* world, int positionX, int positionY)
 {
 }
 
+Nightshade::Nightshade(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Plant(world, power, positionX, positionY, previousPositionX, previousPositionY, turns, 'J', "Wilcze jagody")
+{
+}
+
 void Nightshade::breed()
 {
 	int newPositionX = this->positionX;

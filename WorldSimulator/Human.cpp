@@ -4,7 +4,24 @@ Human::Human(World* world, int positionX, int positionY)
 	: Animal(world, 4, 4, positionX, positionY, 'C', "Czlowiek")
 {
 	this->direction = 0;
+	this->boost = 0;
 	this->delay = 0;
+}
+
+Human::Human(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Animal(world, power, initiative, positionX, positionY, previousPositionX, previousPositionY, turns, 'C', "Czlowiek")
+{
+	this->direction = 0;
+	this->delay = 0;
+	this->boost = 0;
+}
+
+Human::Human(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns, int boost, int delay)
+	:Animal(world, power, initiative, positionX, positionY, previousPositionX, previousPositionY, turns, 'C', "Czlowiek")
+{
+	this->direction = 0;
+	this->boost = boost;
+	this->delay = delay;
 }
 
 void Human::action()
@@ -29,11 +46,12 @@ void Human::action()
 		this->positionX--;
 	}
 
-	if (this->power > 5)
+	if (this->boost > 0)
 	{
+		this->boost--;
 		this->power--;
 
-		if (this->power == 5)
+		if (this->boost == 0)
 		{
 			this->delay = 5;
 		}
@@ -56,13 +74,24 @@ void Human::specialAbility()
 {
 	if (this->delay == 0)
 	{
-		this->power = 10;
+		this->boost = 10;
+		this->power += this->boost;
 	}
 }
 
 int Human::getDirection()
 {
 	return this->direction;
+}
+
+int Human::getDelay()
+{
+	return this->delay;
+}
+
+int Human::getBoost()
+{
+	return this->boost;
 }
 
 void Human::setDirection(int direction)

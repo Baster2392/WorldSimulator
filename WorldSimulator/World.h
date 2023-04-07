@@ -1,29 +1,34 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <string>
 #include "Organism.h"
 #include "conio2.h"
 
 class Organism;
+class WorldInitializer;
 
 class World
 {
 private:
 	std::vector<std::string> communicats;
 	const int positionX = 3;
-	const int positionY = 3;
+	const int positionY = 4;
 	int height, width;
-
-protected:
-	std::vector<Organism*> organisms;
 	int numberOfOrganisms;
+	int turns;
 
 	void checkCollisions();
-	void printCommunicats();
 	void eraseCommunicats();
 	void deleteKilled();
+	void clearWorld();
 
 public:
+	std::vector<Organism*> organisms;
+
+	void loadFromFile();
 	World(int height, int width);
+	~World();
 
 	// main functions
 	void makeTurn();
@@ -33,11 +38,19 @@ public:
 	void addCommunicat(std::string communicat);
 	Organism* getOrganismAtPosition(int positionX, int positionY);
 	void getSafeFieldNextTo(int positionX, int positionY, int* newPositionX, int* newPositionY);
+	void printCommunicats();
 
 	// getters
 	int getPositionX();
 	int getPositionY();
 	int getHeight();
 	int getWidth();
+	int getTurns();
+	int getNumbersOfOrganisms();
+
+	friend WorldInitializer;
+
+	// setters
+	void setTurns(int turns);
 };
 

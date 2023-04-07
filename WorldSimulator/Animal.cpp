@@ -1,7 +1,12 @@
 #include "Animal.h"
 
 Animal::Animal(World* world, int power, int initiative, int positionX, int positionY, char icon, const char* name)
-	: Organism(world, power, initiative, positionX, positionY, icon, name)
+	: Organism(world, power, initiative, positionX, positionY, positionX, positionY, 0, icon, name)
+{
+}
+
+Animal::Animal(World* world, int power, int initiative, int positionX, int positionY, int previousPositionX, int previousPositionY, int turns, char icon, const char* name)
+	:Organism(world, power, initiative, positionX, positionY, previousPositionX, previousPositionY, turns, icon, name)
 {
 }
 

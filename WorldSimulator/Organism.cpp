@@ -31,24 +31,19 @@ bool Organism::areAtTheSamePosition(Organism* organism1, int positionX, int posi
 		organism1->getPositionY() == positionY;
 }
 
-Organism::Organism()
-{
-
-}
-
-Organism::Organism(World* world, int power, int initiative, int positionX, int positionY, char icon, const char* name)
+Organism::Organism(World* world, int power, int initiative, int positionX, int positionY, int previousPositionX, int previousPositionY, int turns, char icon, const char* name)
 {
 	this->world = world;
 	this->power = power;
 	this->initiative = initiative;
 	this->positionX = positionX;
 	this->positionY = positionY;
-	this->turns = 0;
+	this->turns = turns;
 	this->icon = icon;
 	this->isKilled = false;
 	this->name = name;
-	this->prevPositionX = positionX;
-	this->prevPositionY = positionY;
+	this->prevPositionX = previousPositionX;
+	this->prevPositionY = previousPositionY;
 }
 
 Organism::~Organism()
@@ -58,7 +53,7 @@ Organism::~Organism()
 
 void Organism::action()
 {
-
+	std::cout << "Bruh" << std::endl;
 }
 
 void Organism::collision(Organism* other)
@@ -289,4 +284,18 @@ void Organism::setTurns(int turns)
 void Organism::setIsKilled(bool isKilled)
 {
 	this->isKilled = isKilled;
+}
+
+std::ofstream& operator<<(std::ofstream& os, Organism* organism)
+{
+	os << organism->name << std::endl;
+	os << organism->positionX << std::endl;
+	os << organism->positionY << std::endl;
+	os << organism->prevPositionX << std::endl;
+	os << organism->prevPositionY << std::endl;
+	os << organism->power << std::endl;
+	os << organism->initiative << std::endl;
+	os << organism->turns;
+
+	return os;
 }

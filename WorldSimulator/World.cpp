@@ -6,6 +6,18 @@ World::World(int height, int width)
 	this->width = width;
 	this->numberOfOrganisms = 0;
 	this->organisms;
+	this->turns = 0;
+}
+
+World::~World()
+{
+	for (Organism* organism : this->organisms)
+	{
+		if (organism != nullptr)
+		{
+			delete organism;
+		}
+	}
 }
 
 void World::makeTurn()
@@ -24,6 +36,7 @@ void World::makeTurn()
 
 	checkCollisions();
 	deleteKilled();
+	this->turns++;
 }
 
 void World::draw()
@@ -64,10 +77,12 @@ void World::draw()
 void World::deleteOrganism(Organism* organism)
 {
 	this->organisms.erase(std::remove(organisms.begin(), organisms.end(), organism), organisms.end());
+	this->numberOfOrganisms--;
 }
 
 void World::addOrganism(Organism* organism)
 {
+	this->numberOfOrganisms++;
 	for (int i = 0; i < this->organisms.size(); i++)
 	{
 		if (this->organisms[i]->getInitiative() < organism->getInitiative())
@@ -98,7 +113,7 @@ void World::eraseCommunicats()
 {
 	for (int i = 0; i < this->communicats.size(); i++)
 	{
-		gotoxy(this->getPositionY() + this->width + 20, i + 3);
+		gotoxy(this->getPositionX() + this->width + 20, i + 3);
 		for (int j = 0; j < 50; j++)
 		{
 			std::cout << " ";
@@ -115,6 +130,18 @@ void World::deleteKilled()
 			deleteOrganism(organism);
 		}
 	}
+}
+
+void World::clearWorld()
+{
+	numberOfOrganisms = 0;
+	turns = 0;
+	organisms.clear();
+}
+
+void World::loadFromFile()
+{
+
 }
 
 Organism* World::getOrganismAtPosition(int positionX, int positionY)
@@ -214,4 +241,19 @@ int World::getHeight()
 int World::getWidth()
 {
 	return this->width;
+}
+
+int World::getTurns()
+{
+	return this->turns;
+}
+
+int World::getNumbersOfOrganisms()
+{
+	return this->numberOfOrganisms;
+}
+
+void World::setTurns(int turns)
+{
+	this->turns = turns;
 }

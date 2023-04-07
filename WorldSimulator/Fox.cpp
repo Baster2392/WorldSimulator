@@ -5,6 +5,11 @@ Fox::Fox(World* world, int positionX, int positionY)
 {
 }
 
+Fox::Fox(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Animal(world, power, initiative, positionX, positionY, previousPositionX, previousPositionY, turns, 'L', "Lis")
+{
+}
+
 void Fox::action()
 {
 	int direction = Organism::randomField();

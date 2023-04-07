@@ -22,6 +22,11 @@ protected:
 	int initiative;
 	bool isKilled;
 
+	virtual void breed();
+	virtual bool isAttackDefended(Organism* organism);
+	virtual void specialEffectAfterKilled(Organism* other);
+	virtual bool hasEscaped(Organism* other);
+
 	static const int randomFrom = 1;
 	static const int randomTo = 4;
 
@@ -29,17 +34,12 @@ public:
 	std::string name;
 
 	// constructors and desctructors
-	Organism();
-	Organism(World* world, int power, int initiative, int positionX , int positionY, char icon, const char* name);
+	Organism(World* world, int power, int initiative, int positionX , int positionY, int previousPositionX, int previousPositionY, int turns, char icon, const char* name);
 	~Organism();
 
 	// main functions
 	virtual void action();
 	virtual void collision(Organism* other);
-	virtual void breed();
-	virtual bool isAttackDefended(Organism* organism);
-	virtual void specialEffectAfterKilled(Organism* other);
-	virtual bool hasEscaped(Organism* other);
 	virtual void goToPreviousPosition();
 	virtual void goToSafeField();
 	virtual bool isAnimal();
@@ -66,6 +66,8 @@ public:
 	void setPositionY(int positionY);
 	void setTurns(int turns);
 	void setIsKilled(bool isKilled);
+
+	friend std::ofstream& operator<<(std::ofstream& os, Organism* organism);
 
 	// random fileds
 	static int randomField();

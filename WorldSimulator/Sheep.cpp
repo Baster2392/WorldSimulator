@@ -5,6 +5,11 @@ Sheep::Sheep(World* world, int positionX, int positionY)
 {
 }
 
+Sheep::Sheep(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Animal(world, power, initiative, positionX, positionY, previousPositionX, previousPositionY, turns, 'O', "Owca")
+{
+}
+
 void Sheep::breed()
 {
 	int newPositionX = this->positionX;

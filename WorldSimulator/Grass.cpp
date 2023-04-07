@@ -6,6 +6,11 @@ Grass::Grass(World* world, int positionX, int positionY)
 
 }
 
+Grass::Grass(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Plant(world, power, positionX, positionY, previousPositionX, previousPositionY, turns, 'T', "Trawa")
+{
+}
+
 void Grass::breed()
 {
 	int newPositionX = this->positionX;

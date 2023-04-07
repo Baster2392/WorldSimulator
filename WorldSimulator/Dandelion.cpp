@@ -5,6 +5,11 @@ Dandelion::Dandelion(World* world, int positionX, int positionY)
 {
 }
 
+Dandelion::Dandelion(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Plant(world, power, positionX, positionY, previousPositionX, previousPositionY, turns, 'M', "Mlecz")
+{
+}
+
 void Dandelion::breed()
 {
 	for (int i = 0; i < 3; i++)

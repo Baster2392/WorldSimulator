@@ -20,9 +20,13 @@ bool Plant::isBreeding()
 }
 
 Plant::Plant(World* world, int power, int positionX, int positionY, char icon, const char* name)
-	: Organism(world, power, 0, positionX, positionY, icon, name)
+	: Organism(world, power, 0, positionX, positionY, positionX, positionY, 0, icon, name)
 {
 
+}
+Plant::Plant(World* world, int power, int positionX, int positionY, int previousPositionX, int previousPositionY, int turns, char icon, const char* name)
+	:Organism(world, power, 0, positionX, positionY, previousPositionX, previousPositionY, turns, icon, name)
+{
 }
 
 void Plant::action()

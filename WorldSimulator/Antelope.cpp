@@ -30,6 +30,11 @@ Antelope::Antelope(World* world, int positionX, int positionY)
 {
 }
 
+Antelope::Antelope(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Animal(world, power, initiative, positionX, positionY, previousPositionX, previousPositionY, turns, 'A', "Antylopa")
+{
+}
+
 
 bool Antelope::hasEscaped(Organism* organism)
 {

@@ -5,6 +5,11 @@ Guarana::Guarana(World* world, int positionX, int positionY)
 {
 }
 
+Guarana::Guarana(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Plant(world, power, positionX, positionY, previousPositionX, previousPositionY, turns, 'G', "Guarana")
+{
+}
+
 void Guarana::specialEffectAfterKilled(Organism* other)
 {
 	world->addCommunicat(other->getName() + " zyskuje 3 pkt ataku");

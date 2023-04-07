@@ -6,6 +6,11 @@ Wolf::Wolf(World* world, int positionX, int positionY)
 
 }
 
+Wolf::Wolf(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Animal(world, power, initiative, positionX, positionY, previousPositionX, previousPositionY, turns, 'W', "Wilk")
+{
+}
+
 void Wolf::breed()
 {
 	int newPositionX = this->positionX;

@@ -5,6 +5,11 @@ Turtle::Turtle(World* world, int positionX, int positionY)
 {
 }
 
+Turtle::Turtle(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Animal(world, power, initiative, positionX, positionY, previousPositionX, previousPositionY, turns, 'Z', "Zolw")
+{
+}
+
 void Turtle::action()
 {
 	if (Organism::randomField() == 1)

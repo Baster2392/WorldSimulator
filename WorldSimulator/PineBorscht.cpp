@@ -49,6 +49,11 @@ PineBorscht::PineBorscht(World* wolrd, int positionX, int positionY)
 {
 }
 
+PineBorscht::PineBorscht(World* world, int positionX, int positionY, int previousPositionX, int previousPositionY, int power, int initiative, int turns)
+	:Plant(world, power, positionX, positionY, previousPositionX, previousPositionY, turns, 'B', "Barszcz sosnowskiego")
+{
+}
+
 void PineBorscht::action()
 {
 	killAnimalAround();
