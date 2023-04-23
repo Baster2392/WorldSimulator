@@ -100,6 +100,7 @@ void WorldInitializer::loadFromFile()
 WorldInitializer::WorldInitializer(World* world)
 {
 	this->world = world;
+	this->human = nullptr;
 }
 
 void WorldInitializer::initializeWorld()
@@ -136,7 +137,7 @@ void WorldInitializer::initializeWorld()
 	world->addOrganism(pineBorsvht);
 
 	world->draw();
-	gotoxy(1, 1);
+	World::gotoxy(1, 1);
 	printf("Jakub Slawinski 193271");
 
 	char ch;
@@ -144,7 +145,7 @@ void WorldInitializer::initializeWorld()
 
 	while (true)
 	{
-		ch = getch();
+		ch = _getch();
 		switch (ch)
 		{
 		case 'H':
@@ -176,7 +177,7 @@ void WorldInitializer::initializeWorld()
 			this->world->draw();
 		}
 
-		gotoxy(1, 2);
+		World::gotoxy(1, 2);
 		printf("Turns: %d Power: %d ", this->world->getTurns(), this->human->getPower());
 	}
 }

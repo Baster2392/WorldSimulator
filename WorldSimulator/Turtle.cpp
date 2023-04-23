@@ -37,7 +37,7 @@ void Turtle::breed()
 
 bool Turtle::isAttackDefended(Organism* other)
 {
-	gotoxy(15, 15);
+	World::gotoxy(15, 15);
 	if (other->getPower() < 5)
 	{
 		world->addCommunicat("Zolw odbil atak: " + other->getName());

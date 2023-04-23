@@ -2,8 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <conio.h>
+#include <windows.h> 
 #include "Organism.h"
-#include "conio2.h"
 
 class Organism;
 class WorldInitializer;
@@ -49,6 +50,8 @@ public:
 	int getNumbersOfOrganisms();
 
 	friend WorldInitializer;
+
+	static void gotoxy(int x, int y);
 
 	// setters
 	void setTurns(int turns);
