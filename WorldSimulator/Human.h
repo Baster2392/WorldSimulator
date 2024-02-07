@@ -16,6 +16,7 @@ public:
 
 	// main functions
 	void action();
+	void breed();
 	void collision(Organism* other);
 	void specialAbility();
 

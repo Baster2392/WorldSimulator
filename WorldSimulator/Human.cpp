@@ -62,6 +62,10 @@ void Human::action()
 	}
 }
 
+void Human::breed()
+{
+}
+
 void Human::collision(Organism* other)
 {
 	if (!isSameSpecies(this, other))

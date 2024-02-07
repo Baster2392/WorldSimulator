@@ -15,11 +15,6 @@ void Animal::action()
 	move();
 }
 
-void Animal::breed()
-{
-	
-}
-
 bool Animal::isAnimal()
 {
 	return true;

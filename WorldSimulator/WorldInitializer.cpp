@@ -97,6 +97,15 @@ void WorldInitializer::loadFromFile()
 	this->world->printCommunicats();
 }
 
+int WorldInitializer::getRandomPositionParameter()
+{
+	std::random_device randomDevice;
+	std::mt19937 generator(randomDevice());
+	std::uniform_int_distribution<int> distr(0, this->world->getHeight() - 1);
+
+	return distr(generator);
+}
+
 WorldInitializer::WorldInitializer(World* world)
 {
 	this->world = world;
@@ -106,29 +115,37 @@ WorldInitializer::WorldInitializer(World* world)
 void WorldInitializer::initializeWorld()
 {
 	this->human = new Human(world, 0, 0);
-	Wolf* wolf = new Wolf(world, 3, 3);
-	Wolf* wolf2 = new Wolf(world, 4, 4);
-	Wolf* wolf3 = new Wolf(world, 2, 2);
-	Sheep* sheep = new Sheep(world, 5, 4);
-	Sheep* sheep2 = new Sheep(world, 5, 6);
-	Fox* fox = new Fox(world, 6, 6);
-	Turtle* turtle = new Turtle(world, 3, 1);
-	Antelope* antelope = new Antelope(world, 2, 2);
-	Grass* grass = new Grass(world, 1, 5);
-	Dandelion* dandelion = new Dandelion(world, 9, 9);
-	Guarana* guarana = new Guarana(world, 7, 7);
-	Guarana* guarana2 = new Guarana(world, 7, 9);
-	Nightshade* nightshade = new Nightshade(world, 2, 3);
-	PineBorscht* pineBorsvht = new PineBorscht(world, 2, 7);
+	Wolf* wolf = new Wolf(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Wolf* wolf2 = new Wolf(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Wolf* wolf3 = new Wolf(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Sheep* sheep = new Sheep(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Sheep* sheep2 = new Sheep(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Sheep* sheep3 = new Sheep(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Fox* fox = new Fox(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Fox* fox2 = new Fox(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Turtle* turtle = new Turtle(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Turtle* turtle2 = new Turtle(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Antelope* antelope = new Antelope(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Antelope* antelope2 = new Antelope(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Grass* grass = new Grass(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Dandelion* dandelion = new Dandelion(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Guarana* guarana = new Guarana(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Guarana* guarana2 = new Guarana(world, getRandomPositionParameter(), getRandomPositionParameter());
+	Nightshade* nightshade = new Nightshade(world, getRandomPositionParameter(), getRandomPositionParameter());
+	PineBorscht* pineBorsvht = new PineBorscht(world, getRandomPositionParameter(), getRandomPositionParameter());
 
 	world->addOrganism(this->human);
 	world->addOrganism(wolf);
 	world->addOrganism(wolf2);
 	world->addOrganism(fox);
+	world->addOrganism(fox2);
 	world->addOrganism(turtle);
+	world->addOrganism(turtle2);
 	world->addOrganism(antelope);
+	world->addOrganism(antelope2);
 	world->addOrganism(sheep);
 	world->addOrganism(sheep2);
+	world->addOrganism(sheep3);
 	world->addOrganism(grass);
 	world->addOrganism(dandelion);
 	world->addOrganism(guarana);
@@ -229,3 +246,5 @@ void WorldInitializer::buildOrganism(World* world, const char* name, int positio
 
 	this->world->addOrganism(newOrganism);
 }
+
+

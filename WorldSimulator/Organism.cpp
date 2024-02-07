@@ -51,11 +51,6 @@ Organism::~Organism()
 	
 }
 
-void Organism::action()
-{
-	std::cout << "Bruh" << std::endl;
-}
-
 void Organism::collision(Organism* other)
 {
 	if (isSameSpecies(this, other))

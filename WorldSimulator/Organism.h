@@ -38,7 +38,7 @@ public:
 	~Organism();
 
 	// main functions
-	virtual void action();
+	virtual void action() = 0;
 	virtual void collision(Organism* other);
 	virtual void goToPreviousPosition();
 	virtual void goToSafeField();

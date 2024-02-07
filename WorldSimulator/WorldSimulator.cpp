@@ -6,7 +6,7 @@ class World;
 
 int main()
 {
-    World world(12, 12);
+    World world(14, 14);
     WorldInitializer init(&world);
     init.initializeWorld();
 }

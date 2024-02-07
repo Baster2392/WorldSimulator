@@ -37,10 +37,6 @@ void Plant::action()
 	}
 }
 
-void Plant::breed()
-{
-}
-
 bool Plant::isPlant()
 {
 	return true;

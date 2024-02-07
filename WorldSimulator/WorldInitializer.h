@@ -20,6 +20,7 @@ private:
 
 	void saveToFile();
 	void loadFromFile();
+	int getRandomPositionParameter();
 public:
 	WorldInitializer(World* world);
 	void initializeWorld();

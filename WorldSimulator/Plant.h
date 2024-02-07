@@ -14,7 +14,7 @@ public:
 	Plant(World* world, int power, int positionX, int positionY, int previousPositionX, int previousPositionY, int turns, char icon, const char* name);
 
 	void action();
-	void breed();
+	void breed() = 0;
 	bool isPlant();
 };
 
